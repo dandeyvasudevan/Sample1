@@ -1,0 +1,39 @@
+<h2 class="form-signin-heading">{{action}} Pattern</h2>
+        
+        <form id="addPattern" name="addPattern" novalidate>
+            <!-- Instrument -->
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" ng-model="pattern.name" 
+                       required placeholder="Enter Name">
+                <p ng-show="addPattern.name.$invalid 
+                            && !addPattern.name.$pristine 
+                            && addPattern.name.$error.required" class="label label-danger">Pattern Name is required.</p>
+                
+            </div>
+            
+            <!-- Daily -->
+            <div class="form-group">
+                <label>Display Name</label>
+                <input type="text" name="displayname" class="form-control" ng-model="pattern.displayname" 
+                       required placeholder="Enter Display Name">
+                <p ng-show="addPattern.displayname.$invalid 
+                            && !addPattern.displayname.$pristine 
+                            && addPattern.displayname.$error.required" class="label label-danger">Display Name is required.</p>
+                
+            </div>
+            
+            <!-- Weekly -->
+            <div class="form-group">
+                <label>Alternative Name</label>
+                <input type="text" name="altnames" class="form-control" ng-model="pattern.altnames">
+                <p ng-show="addPattern.altnames.$invalid 
+                            && !addPattern.altnames.$pristine 
+                            && addPattern.altnames.$error.required" class="label label-danger">Alternative Name is required.</p>
+                
+            </div>
+            
+                        
+            <input type="hidden" id="hdnEditID" name="hdnEditID" ng-model="pattern.id" value="" />
+            <button type="submit" ng-click="submitForm(pattern)" class="btn btn-primary" ng-disabled="addPattern.$invalid">Submit</button>
+        </form>

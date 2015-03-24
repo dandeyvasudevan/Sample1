@@ -1,0 +1,65 @@
+<div class="wrapper col-xs-offset-2 col-xs-8">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">Forgot Password?</div>
+        </div>  
+
+        <div class="panel-body" >
+            <form name="form" class="form-horizontal" ng-submit="forgotpwd(user);">
+
+            <div id="signupalert" style="display:none" class="alert alert-danger">
+                <span></span>
+            </div>
+                
+            <div id="signupsuccess" style="display:none" class="alert alert-success">
+                <p>Success: </p>
+                <span></span>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="col-md-3 control-label">User Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="username" ng-model="user.userName" 
+                           placeholder="User Name" required>
+                    <span ng-show="form.username.$dirty && form.username.$error.required" class="label label-danger">
+                        UserName is required
+                    </span>
+                </div>
+            </div>    
+            
+            <div class="form-group">
+                <label for="password" class="col-md-3 control-label">New Password</label>
+                <div class="col-md-9">
+                    <input type="password" class="form-control" name="password" ng-model="user.password" 
+                           placeholder="Password" required>
+                    <span ng-show="form.password.$dirty && form.password.$error.required" class="label label-danger">
+                        Password is required
+                    </span>
+                </div>
+            </div>   
+                
+            <div class="form-group">
+                <!-- Button -->                                        
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Submit</button>
+                    <span ng-if="dataLoading">Loading..</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-12 control">
+                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                        Don't have an account! 
+                        <a href="#/registration">Sign Up Here</a>
+                    </div>
+                    <div style="float:left; font-size: 80%;">
+                        Want to sign in!
+                        <a href="#/">Login</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+  

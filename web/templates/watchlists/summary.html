@@ -1,0 +1,9 @@
+<div>
+   Select Date Range: <input type="daterange" ng-model="dates2" format="DD-MMMM-YYYY" separator="/" style="width:400px;" /> 
+   <input type="button" id="btnSearchTrades" name="btnSearchTrades" value="Search" 
+          ng-click="searchWatchlists(dates2);" class="btn btn-primary" /> <br /> <br />
+</div>
+	
+<!-- <code>{{dates2|json}}</code> -->
+
+<div id="grid" class="gridStyle" ng-grid="watchlists" style="width:100%;"></div>

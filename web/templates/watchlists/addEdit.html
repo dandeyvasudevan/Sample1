@@ -1,0 +1,98 @@
+<h2 class="form-signin-heading">{{action}} Watchlist</h2>
+        
+        <form id="addWatchlist" name="addWatchlist" novalidate>
+            <!-- Instrument -->
+            <div class="form-group">
+                <label>Instrument</label>
+                <input type="text" name="instrument" class="form-control" ng-model="watchlist.ins" ng-pattern="/^([a-zA-Z]{3})+\_[a-zA-Z]{2,3}$/" required
+                       placeholder="Enter instrument like EUR_AGN">
+                <p ng-show="addWatchlist.instrument.$invalid 
+                            && !addWatchlist.instrument.$pristine 
+                            && addWatchlist.instrument.$error.required" class="help-block">Instrument is required.</p>
+                <p ng-show="addWatchlist.instrument.$error.pattern">Enter Valid Format</p>
+            </div>
+            
+            <!-- Daily -->
+            <div class="form-group">
+                <label>Daily</label>
+                <input type="text" name="daily" class="form-control" ng-model="watchlist.dly" required>
+                <p ng-show="addWatchlist.daily.$invalid 
+                            && !addWatchlist.daily.$pristine 
+                            && addWatchlist.daily.$error.required" class="help-block">Daily is required.</p>
+            </div>
+            
+            <!-- Weekly -->
+            <div class="form-group">
+                <label>Weekly</label>
+                <input type="text" name="weekly" class="form-control" ng-model="watchlist.wkly" required>
+                <p ng-show="addWatchlist.weekly.$invalid 
+                            && !addWatchlist.weekly.$pristine 
+                            && addWatchlist.weekly.$error.required" class="help-block">Weekly is required.</p>
+            </div>
+            
+            <!-- Candlestick -->
+            <div class="form-group">
+                <label>CandleStick</label>
+                <input type="text" name="candlestick" class="form-control" ng-model="watchlist.cdlst" required>
+                <p ng-show="addWatchlist.candlestick.$invalid 
+                            && !addWatchlist.candlestick.$pristine 
+                            && addWatchlist.candlestick.$error.required" class="help-block">Candlestick is required.</p>
+            </div>
+            
+            <!-- Resistance Major -->
+            <div class="form-group">
+                <label>Resistance Major</label>
+                <input type="text" name="resistancemajor" class="form-control" ng-model="watchlist.resmaj" ng-pattern="/^\d{1,4}(\.\d{1,4})$/" required
+                       placeholder="Enter Resistance Major in the format - 1.4242">
+                <p ng-show="addWatchlist.resistancemajor.$invalid 
+                            && !addWatchlist.resistancemajor.$pristine 
+                            && addWatchlist.resistancemajor.$error.required" class="help-block">Resistance Major is required.</p>
+                <p ng-show="addWatchlist.resistancemajor.$error.pattern">Enter Valid Format</p>
+            </div>
+            
+            <!-- Resistance Minor -->
+            <div class="form-group">
+                <label>Resistance Minor</label>
+                <input type="text" name="resistanceminor" class="form-control" ng-model="watchlist.resmin" ng-pattern="/^\d{1,4}(\.\d{1,4})$/" required
+                       placeholder="Enter Resistance Minor in the format - 1.4242">
+                <p ng-show="addWatchlist.resistanceminor.$invalid 
+                            && !addWatchlist.resistanceminor.$pristine 
+                            && addWatchlist.resistanceminor.$error.required" class="help-block">Resistance Minor is required.</p>
+                <p ng-show="addWatchlist.resistanceminor.$error.pattern">Enter Valid Format</p>
+            </div>
+            
+        <!-- Support Major -->
+        <div class="form-group">
+            <label>Support Major</label>
+            <input type="text" name="supportmajor" class="form-control" ng-model="watchlist.suppmaj" ng-pattern="/^\d{1,4}(\.\d{1,4})$/" required
+                   placeholder="Enter Support Major in the format - 1.4242">
+            <p ng-show="addWatchlist.supportmajor.$invalid 
+                        && !addWatchlist.supportmajor.$pristine 
+                        && addWatchlist.supportmajor.$error.required" class="help-block">Support Major is required.</p>
+            <p ng-show="addWatchlist.supportmajor.$error.pattern">Enter Valid Format</p>
+        </div>
+
+        <!-- Support Minor -->
+        <div class="form-group">
+            <label>Support Minor</label>
+            <input type="text" name="supportminor" class="form-control" ng-model="watchlist.suppmin" ng-pattern="/^\d{1,4}(\.\d{1,4})$/" required
+                   placeholder="Enter Resistance Minor in the format - 1.4242">
+            <p ng-show="addWatchlist.supportminor.$invalid 
+                        && !addWatchlist.supportminor.$pristine 
+                        && addWatchlist.supportminor.$error.required" class="help-block">Support Minor is required.</p>
+            <p ng-show="addWatchlist.supportminor.$error.pattern">Enter Valid Format</p>
+        </div>
+
+    <!-- Notes -->
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea name="notes" class="form-control" ng-model="watchlist.nt" required></textarea>
+        <p ng-show="addWatchlist.notes.$invalid 
+                    && !addWatchlist.notes.$pristine 
+                    && addWatchlist.notes.$error.required" class="help-block">Notes is required.</p>
+
+    </div>
+            
+            <input type="hidden" id="hdnEditID" name="hdnEditID" ng-model="watchlist.id" value="" />
+            <button type="submit" ng-click="submitForm(watchlist)" class="btn btn-primary" ng-disabled="addWatchlist.$invalid">Submit</button>
+        </form>

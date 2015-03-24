@@ -1,0 +1,109 @@
+<div class="wrapper col-xs-offset-2 col-xs-8">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">Sign Up</div>
+            <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                <a id="signinlink" href="#" style="color: #FFF;text-decoration: underline;">Sign In</a></div>
+        </div>  
+
+        <div class="panel-body" >
+            <div class="alert alert-info">
+                Have a facebook account? 
+                <a style="cursor:pointer;text-decoration: underline;" ng-click="populateFBDetails();">Login</a> 
+                to prefill the form below with your profile information
+            </div>
+            <form name="form" class="form-horizontal" ng-submit="register(user);">
+
+            <div id="signupalert" style="display:none" class="alert alert-danger">
+                <span></span>
+            </div>
+                
+            <div id="signupsuccess" style="display:none" class="alert alert-success">
+                <p>Success: </p>
+                <span></span>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="col-md-3 control-label">User Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="username" ng-model="user.userName" 
+                           placeholder="User Name" required>
+                    <span ng-show="form.username.$dirty && form.username.$error.required" class="label label-danger">
+                        UserName is required
+                    </span>
+                </div>
+            </div>    
+            
+            <div class="form-group">
+                <label for="firstname" class="col-md-3 control-label">First Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="firstname" ng-model="user.firstName" 
+                           placeholder="First Name" required>
+                    <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="label label-danger">
+                        FirstName is required
+                    </span>
+                </div>
+            </div>
+                
+            <div class="form-group">
+                <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="lastname" ng-model="user.lastName" 
+                           placeholder="Last Name" required>
+                    <span ng-show="form.lastname.$dirty && form.lastname.$error.required" class="label label-danger">
+                        LastName is required
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-md-3 control-label">Password</label>
+                <div class="col-md-9">
+                    <input type="password" class="form-control" name="passwd" ng-model="user.password"
+                        ng-minlength="6"   placeholder="Password" required>
+                    <span ng-show="form.passwd.$dirty && form.passwd.$error.required" class="label label-danger">
+                        Password is required
+                    </span>
+                    <span ng-show="form.passwd.$dirty && form.passwd.$error.minlength" class="label label-danger">
+                        Password should be minimum of 6 characters
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="col-md-3 control-label">Email</label>
+                <div class="col-md-9">
+                    <input type="email" class="form-control" name="email" ng-model="user.email" 
+                           placeholder="Email Address" required>
+                    <span ng-show="form.email.$dirty && form.email.$error.required" class="label label-danger">
+                        Email is required
+                    </span>
+                    <span ng-show="form.email.$dirty && form.email.$error.email" class="label label-danger">
+                        Email is not valid
+                    </span>
+                </div>
+            </div>
+                
+            <div class="form-group">
+                <label for="fbusername" class="col-md-3 control-label">Facebook UserName</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" name="fbusername" ng-model="user.fbusername" 
+                           placeholder="Facebook UserName" required>
+                    <span ng-show="form.fbusername.$dirty && form.fbusername.$error.required" class="label label-danger">
+                        Facebook UserName is required
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!-- Button -->                                        
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Sign Up</button>
+                    <span ng-if="dataLoading">Loading..</span>
+                </div>
+            </div>
+            
+        </form>
+        </div>
+    </div>
+</div>
+  

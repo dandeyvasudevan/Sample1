@@ -1,0 +1,44 @@
+<div ng-include src="'templates/header.html'"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        
+        <div ng-include src="'templates/sidebar.html'"></div> 
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">{{title}}</h1>
+          
+          <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>User Name</td>
+                    <td>:</td>
+                    <td>{{userProfile.username}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                    <td>{{userProfile.email}}</td>
+                </tr>
+                <tr>
+                    <td>Full Name</td>
+                    <td>:</td>
+                    <td>{{userProfile.full_name}}</td>
+                </tr>
+                <tr>
+                    <td>FB User Name</td>
+                    <td>:</td>
+                    <td>{{userProfile.fbusername}}</td>
+                </tr>
+                <tr>
+                    <td>User Type</td>
+                    <td>:</td>
+                    <td>{{ (userProfile.admin == 1) ? 'Administrator' : 'User'}}</td>
+                </tr>
+          </table>
+          
+        </div>
+    </div>
+    
+   
+</div>

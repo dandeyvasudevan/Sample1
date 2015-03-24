@@ -1,0 +1,36 @@
+<h4 class="form-signin-heading">User Details</h4>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td>{{user.full_name}}</td>
+                </tr>
+                <tr>
+                    <td>UserName</td>
+                    <td>:</td>
+                    <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <td>Facebook UserName</td>
+                    <td>:</td>
+                    <td>{{user.fbusername}}</td>
+                </tr>
+                <tr>
+                    <td>Active</td>
+                    <td>:</td>
+                    <td>{{(user.active == 1) ? 'Yes':'No'}}</td>
+                </tr>
+                <tr>
+                    <td>UserType</td>
+                    <td>:</td>
+                    <td>{{(user.admin == 1)? 'Admin':'User'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        

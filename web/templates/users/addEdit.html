@@ -1,0 +1,64 @@
+<h2 class="form-signin-heading">{{action}} User</h2>
+        
+        <form id="addUser" name="addUser" novalidate>
+            <!-- FullName -->
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="fullname" class="form-control" ng-model="user.full_name" 
+                       required placeholder="Enter FullName">
+                <p ng-show="addUser.fullname.$invalid 
+                            && !addUser.fullname.$pristine 
+                            && addUser.fullname.$error.required" class="label label-danger">FullName is required.</p>
+                
+            </div>
+            
+            <!-- UserName -->
+            <div class="form-group">
+                <label>UserName</label>
+                <input type="text" name="username" class="form-control" ng-model="user.username" 
+                       required placeholder="Enter UserName">
+                <p ng-show="addUser.username.$invalid 
+                            && !addUser.username.$pristine 
+                            && addUser.username.$error.required" class="label label-danger">UserName is required.</p>
+                
+            </div>
+            
+            <!-- Email -->
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" ng-model="user.email">
+                <p ng-show="addUser.altnames.$invalid 
+                            && !addUser.altnames.$pristine 
+                            && addUser.altnames.$error.required" class="label label-danger">Email is required.</p>
+                
+            </div>
+            
+            <!-- Active -->
+            <div class="form-group">
+                <label>Active</label>
+                <select name="active" class="form-control" ng-model="user.active" required>
+                    <option value="1">Enable</option>
+                    <option value="0">Disable</option>
+                </select>
+                <p ng-show="addUser.active.$invalid 
+                            && !addUser.active.$pristine 
+                            && addUser.active.$error.required" class="label label-danger">Active is required.</p>
+                
+            </div>
+                   
+            <!-- UserType -->
+            <div class="form-group">
+                <label>UserType</label>
+                <select name="admin" class="form-control" ng-model="user.admin" required>
+                    <option value="1">Admin</option>
+                    <option value="0">User</option>
+                </select>
+                <p ng-show="addUser.admin.$invalid 
+                            && !addUser.admin.$pristine 
+                            && addUser.admin.$error.required" class="label label-danger">UserType is required.</p>
+                
+            </div>
+            
+            <input type="hidden" id="hdnEditID" name="hdnEditID" ng-model="user.id" value="" />
+            <button type="submit" ng-click="submitForm(user)" class="btn btn-primary" ng-disabled="addUser.$invalid">Submit</button>
+        </form>

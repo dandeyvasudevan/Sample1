@@ -1,0 +1,28 @@
+
+<!--<div ng-include src="'templates/header.html'"></div> -->
+<div ng-include="'templates/header.html'"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        
+        <div data-ng-include="'templates/sidebar.html'"></div> 
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">{{title}}</h1>
+          <br />
+          
+            
+            <div ng-include src="'templates/watchlists/grid.html'"></div> 
+            
+            <!-- {{ routeParams.option }} -->
+        </div>
+    </div>
+    
+    <modal-dialog show='modalShown1' dialog-title='My Dialog' width='450px' height='80%'>
+        <div ng-include src="'templates/watchlists/list.html'"></div>
+    </modal-dialog>
+    
+    <modal-dialog show='modalShown2' dialog-title='Add Watchlist' width='450px' height='85%'>
+        <div ng-include src="'templates/watchlists/addEdit.html'"></div>
+    </modal-dialog>
+</div>

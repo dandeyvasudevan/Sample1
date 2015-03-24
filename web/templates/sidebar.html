@@ -1,0 +1,15 @@
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li id="lstHome" ng-class="{ active: isActive('/home/dashboard')}"><a href="#/home/dashboard">Home</a></li>
+    </ul>
+
+    <div id="adminMenu" ng-show="admin == 1">
+        <h4>Admin Menu</h4>
+        <ul class="nav nav-sidebar">
+                <li id="lstUsers" ng-class="{ active: isActive('/home/admin/users')}">
+                    <a href="#/home/admin/users">Manage Users</a>
+                </li>
+           </ul>
+        </ul>
+    </div>
+</div>

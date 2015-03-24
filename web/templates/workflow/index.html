@@ -1,0 +1,12 @@
+<div class="col-xs-6">
+<form class="tab-pane active" id="first" name="firstForm" novalidate>
+    <h2>Workflow</h2>
+    
+    <div style="display:inline-block; min-height:290px;">
+        <datepicker id="dt" name="dt" ng-model="dt" show-weeks="true" ng-click="selectDate(dt);" 
+                    required class="well well-sm"></datepicker>
+    </div> 
+   
+    <button type="submit" ng-click="submitWorkFlow(dt)" class="btn btn-primary">Submit</button>
+</form>
+</div>
