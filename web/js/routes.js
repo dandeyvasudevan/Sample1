@@ -127,7 +127,7 @@ module.run( function($templateCache, $rootScope, $window, utils, $q, ezfb, $log)
     
 });
 
-var APP_URL     = 'http://localhost/SampleApp/';
+var APP_URL     = 'http://localhost:8081/SampleApp/';
 var restAPI     = APP_URL+'v1/';
 
 

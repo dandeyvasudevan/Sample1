@@ -84,12 +84,12 @@ $app->get(
     <html>
         <head>
             <meta charset="utf-8"/>
-            <title>EApps Tech</title>
+            <title></title>
             
         </head>
         <body>
             
-            <h1>EApps Tech</h1>
+            <h1></h1>
             
         </body>
     </html>
