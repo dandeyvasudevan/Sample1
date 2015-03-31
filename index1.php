@@ -123,12 +123,8 @@ $app->get(
         'authenticate',
         function($model) use ($app){
             $userID     =   OAuth2::getUserID();
-            
-            if( $model == "watchlists" || $model == "trades") {
-                $modelData  =   R::find($model, 'user_id=?', array($userID));
-            } else {
-                $modelData  =   R::find($model);
-            }
+          
+            $modelData  =   R::find($model);
             $request    =   $app->request();
             //$request->headers('Access-Control-Allow-Headers','Authorization,DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type');    
              

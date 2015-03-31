@@ -1,0 +1,21 @@
+<h4 class="form-signin-heading">Team Details</h4>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td>{{team.name}}</td>
+                </tr>
+                <tr>
+                    <td>Client location</td>
+                    <td>:</td>
+                    <td>{{team.location}}</td>
+                </tr>
+                <tr>
+                    <td>Active</td>
+                    <td>:</td>
+                    <td>{{(team.active == 1) ? 'Yes':'No'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        

@@ -1,0 +1,42 @@
+<h2 class="form-signin-heading">{{action}} User</h2>
+        
+        <form id="addTeam" name="addTeam" novalidate>
+            <!-- FullName -->
+            <div class="form-group">
+                <label>Team Name</label>
+                <input type="text" name="name" class="form-control" ng-model="team.team_name" 
+                       required placeholder="Enter Team Name">
+                <p ng-show="addTeam.name.$invalid 
+                            && !addTeam.name.$pristine 
+                            && addTeam.name.$error.required" class="label label-danger">Name is required.</p>
+                
+            </div>
+            
+            <!-- UserName -->
+            <div class="form-group">
+                <label>Client location</label>
+                <input type="text" name="location" class="form-control" ng-model="team.client_location" 
+                       required placeholder="Enter Location">
+                <p ng-show="addTeam.location.$invalid 
+                            && !addTeam.location.$pristine 
+                            && addTeam.location.$error.required" class="label label-danger">Location is required.</p>
+                
+            </div>
+            
+            <!-- Active -->
+            <div class="form-group">
+                <label>Active</label>
+                <select name="active" class="form-control" ng-model="team.active" required>
+                    <option value="1">Enable</option>
+                    <option value="0">Disable</option>
+                </select>
+                <p ng-show="addTeam.active.$invalid 
+                            && !addTeam.active.$pristine 
+                            && addTeam.active.$error.required" class="label label-danger">Active is required.</p>
+                
+            </div>
+                   
+                        
+            <input type="hidden" id="hdnEditID" name="hdnEditID" ng-model="team.id" value="" />
+            <button type="submit" ng-click="submitForm(team)" class="btn btn-primary" ng-disabled="addTeam.$invalid">Submit</button>
+        </form>

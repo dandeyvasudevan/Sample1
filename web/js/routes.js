@@ -26,6 +26,14 @@ module.config(['$routeProvider', '$locationProvider', 'ezfbProvider',
                    utils: 'utils'
                }
             }).
+            when('/home/admin/teams', {
+               templateUrl: 'templates/teams.html',
+               controller: 'TeamsController',
+               resolve: {
+                   dataFactory: 'dataFactory',
+                   utils: 'utils'
+               }
+            }).
             when('/home/profile', { //:option
                 templateUrl: 'templates/profile.html',
                 controller: 'profileController',
@@ -127,7 +135,7 @@ module.run( function($templateCache, $rootScope, $window, utils, $q, ezfb, $log)
     
 });
 
-var APP_URL     = 'http://localhost:8081/SampleApp/';
+var APP_URL     = 'http://localhost/Sample1/';
 var restAPI     = APP_URL+'v1/';
 
 
@@ -545,6 +553,118 @@ module.controller("UsersController",
         };
         
         $scope.displayUsers();
+        
+    });
+
+module.controller("TeamsController",
+    function($rootScope, $scope, $location, $http, $window, $routeParams, dataFactory, utils){
+        var model = 'teams';
+        
+        $scope.userName = $window.sessionStorage.userName || null;
+        $scope.admin = $scope.isAdmin();
+        $scope.title = "Manage Teams";
+        
+        $scope.addTeam = function(){
+            $scope.team   = {};
+            $scope.action       = "Add";
+            $scope.modalShown2  = true;
+        };
+        
+        $scope.displayTeams = function() {
+                $scope.teams = [];    
+                dataFactory.getData(model)
+                    .success(function(data) {
+                            $scope.teams = data.teams;
+                            console.log( $scope.teams );
+                            
+                            
+                        });
+                        
+                        $scope.teams  =   {
+                            data: model,
+                            multiSelect: false, 
+                            showGroupPanel: false,
+                            columnDefs: [{field: 'team_name', displayName: 'Team Name'}, 
+                                         {field: 'client_location', displayName: 'Client Location'},
+                                         {field: 'active',displayName:'Active', 
+                                             cellTemplate: '<div style="padding-left:4px;">\n\
+                                                                    {{(row.getProperty(col.field) == 1) ? \'Active\' : \'Inactive\'}}\n\
+                                                            </div>'},
+                                         
+                                         {field:'id',displayName:'',  
+                                            cellTemplate:'<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)"><i class="glyphicon glyphicon-eye-open"></i></a></div>' 
+                                         },
+                                         {field:'id', displayName:'',
+                                             cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="editTeamID(row)"><i class="glyphicon glyphicon-edit"></i></a></div>'   
+                                         },
+                                         {field:'id', displayName:'',
+                                             cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="removeById(row)"><i class="glyphicon glyphicon-trash"></i></a></div>'
+                                         }
+                                        ]
+                        }; 
+        };
+        
+        $scope.removeById = function(row) {
+            var id = row.entity.id;
+            
+            dataFactory.deleteData(model,id)
+            .success(function(data,status, header, config) {
+                $scope.displayTeams();
+            });
+        };
+        
+        $scope.loadById = function(row) {  
+            $scope.toggleModal(row.entity);
+        };
+        
+        $scope.toggleModal = function($entity) {
+            $scope.modalShown1 = !$scope.modalShown1;
+            $scope.user = $entity;
+        };
+        
+        $scope.editTeamID = function(row){
+            $scope.team = {};
+            
+            window.console && console.log('Edit User ID'+row);
+            $scope.action = "Edit";
+            
+            angular.forEach(row.entity, function(value,key){
+               $scope.team[key] = value;
+            });
+            
+            window.console && console.log('User =>'+JSON.stringify($scope.team));
+            $scope.modalShown2 = true;
+        };
+        
+        $scope.submitForm = function(form){
+            
+            $scope.lst = {};   
+          
+            $scope.lst.team_name         =   form.team_name;
+            $scope.lst.client_location   =   form.client_location;
+            $scope.lst.active       =   form.active;
+                        
+            var data = JSON.stringify($scope.lst);
+            
+            if( form.id ) {
+                dataFactory.updateData('teams', data, form.id)
+                        .success(function(data,status, header, config) {
+                            $scope.user = {};
+                            $scope.modalShown2 = false;
+                            $scope.displayTeams();
+                        });
+            } else {
+                dataFactory.saveData('teams', data)
+                .success(function(data,status, header, config) {
+                       $scope.user = {};
+                       $scope.modalShown2 = false;
+                       $scope.displayTeams();
+                   });
+            }
+            
+        };
+        
+        $scope.displayTeams();
         
     });
     
