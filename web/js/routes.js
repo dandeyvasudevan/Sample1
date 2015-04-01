@@ -135,7 +135,7 @@ module.run( function($templateCache, $rootScope, $window, utils, $q, ezfb, $log)
     
 });
 
-var APP_URL     = 'http://localhost/Sample1/';
+var APP_URL     = 'http://localhost:8081/SampleApp/';
 var restAPI     = APP_URL+'v1/';
 
 
@@ -614,12 +614,13 @@ module.controller("TeamsController",
         };
         
         $scope.loadById = function(row) {  
+            window.console && console.log(row);
             $scope.toggleModal(row.entity);
         };
         
         $scope.toggleModal = function($entity) {
             $scope.modalShown1 = !$scope.modalShown1;
-            $scope.user = $entity;
+            $scope.team = $entity;
         };
         
         $scope.editTeamID = function(row){
